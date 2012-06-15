@@ -18,6 +18,7 @@
 # by BoardConfigVendor.mk
 BOARD_USES_GENERIC_AUDIO := false
 USE_CAMERA_STUB := true
+ENHANCED_DOMX := true
 
 # Use the non-open-source parts, if they're present
 -include vendor/ti/panda/BoardConfigVendor.mk
