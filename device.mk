@@ -91,6 +91,16 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
 	make_ext4fs
 
+# Audio HAL module
+PRODUCT_PACKAGES += \
+	audio.primary.panda
+
+# Tinyalsa utils
+PRODUCT_PACKAGES += \
+	tinymix \
+	tinyplay \
+	tinycap
+
 # BlueZ test tools
 PRODUCT_PACKAGES += \
 	hciconfig \
