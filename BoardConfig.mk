@@ -18,7 +18,9 @@
 # by BoardConfigVendor.mk
 BOARD_USES_GENERIC_AUDIO := false
 USE_CAMERA_STUB := true
+OMAP_ENHANCEMENT := true
 ENHANCED_DOMX := true
+BLTSVILLE_ENHACEMENT := true
 
 # Use the non-open-source parts, if they're present
 -include vendor/ti/panda/BoardConfigVendor.mk
@@ -63,3 +65,9 @@ BOARD_WLAN_DEVICE                := wl12xx_mac80211
 #TARGET_PROVIDES_INIT_RC := true
 #TARGET_USERIMAGES_SPARSE_EXT_DISABLED := true
 
+ifdef OMAP_ENHANCEMENT
+COMMON_GLOBAL_CFLAGS += -DOMAP_ENHANCEMENT -DTARGET_OMAP4
+endif
+
+#Set 32 bytes cache line to true
+ARCH_ARM_HAVE_32_BYTE_CACHE_LINES := true

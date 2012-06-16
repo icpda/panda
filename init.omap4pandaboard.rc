@@ -30,6 +30,8 @@ on fs
     chmod 0600 /dev/ttyO1
     chown bluetooth bluetooth /dev/ttyO1
 
+# change permissions ION driver
+	chmod 0777 /dev/ion
 
 # take a wakelock on boot until PM is working
 	write /sys/power/wake_lock hack

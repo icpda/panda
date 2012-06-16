@@ -30,11 +30,30 @@ PRODUCT_COPY_FILES := \
 	device/ti/panda/android.hardware.bluetooth.xml:system/etc/permissions/android.hardware.bluetooth.xml \
 	frameworks/native/data/etc/android.hardware.usb.host.xml:system/etc/permissions/android.hardware.usb.host.xml \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
-	frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml
+   frameworks/native/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
+   packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:system/etc/permissions/android.software.live_wallpaper.xml
 
 PRODUCT_PACKAGES := \
-        make_ext4fs \
+   ti_omap4_ducati_bins \
+   libOMX_Core \
+   libOMX.TI.DUCATI1.VIDEO.DECODER
+
+# Tiler
+PRODUCT_PACKAGES += \
+   libtimemmgr
+
+# HWC HAL
+PRODUCT_PACKAGES += \
+   hwcomposer.omap4
+
+PRODUCT_PACKAGES += \
 	com.android.future.usb.accessory
+
+PRODUCT_PACKAGES += \
+   boardidentity \
+   libboardidentity \
+   libboard_idJNI \
+   Board_id
 
 PRODUCT_PROPERTY_OVERRIDES := \
 	wifi.interface=wlan0 \
@@ -77,9 +96,20 @@ PRODUCT_PACKAGES += \
 	hciconfig \
 	hcitool
 
+# Live Wallpapers
+PRODUCT_PACKAGES += \
+	LiveWallpapers \
+	LiveWallpapersPicker \
+	MagicSmokeWallpapers \
+	VisualizationWallpapers \
+	librs_jni
+
 $(call inherit-product-if-exists, vendor/ti/panda/device-vendor.mk)
 $(call inherit-product, frameworks/native/build/tablet-dalvik-heap.mk)
 $(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 $(call inherit-product-if-exists, vendor/ti/proprietary/omap4/ti-omap4-vendor.mk)
 $(call inherit-product, device/ti/panda/wl12xx/ti-wl12xx-vendor.mk)
 $(call inherit-product, device/ti/panda/wl12xx/ti-wpan-products.mk)
+$(call inherit-product-if-exists, vendor/ti/panda/device-vendor.mk)
+$(call inherit-product-if-exists, device/ti/proprietary-open/omap4/ti-omap4-vendor.mk)
+$(call inherit-product-if-exists, device/ti/proprietary-open/omap4/ducati-full_panda.mk)
