@@ -13,8 +13,6 @@ on post-fs-data
     mkdir /data/media 0770 media_rw media_rw
     chown media_rw media_rw /data/media
     setprop vold.post_fs_data_done 1
-    mkdir /data/misc/dhcp 0770 dhcp dhcp
-    chown dhcp dhcp /data/misc/dhcp
     mkdir /data/misc/wifi/sockets 0770 wifi wifi
 
 on boot
@@ -34,6 +32,14 @@ on boot
 	write /sys/bus/usb/devices/usb1/power/autosuspend_delay_ms 0
 	write /sys/bus/usb/devices/usb2/power/autosuspend_delay_ms 0
 
+# wi-fi
+	mkdir /data/misc/wifi/sockets 0770 wifi wifi
+	mkdir /data/misc/dhcp 0770 dhcp dhcp
+	insmod /system/lib/modules/compat.ko
+	insmod /system/lib/modules/cfg80211.ko
+	insmod /system/lib/modules/mac80211.ko
+	insmod /system/lib/modules/wl12xx.ko debug_level=0x63c00
+
 on fs
 	mount_all /fstab.omap4pandaboard
 
@@ -48,6 +54,9 @@ on fs
 
 # take a wakelock on boot until PM is working
 	write /sys/power/wake_lock hack
+
+# add symlink for HDCP key
+	symlink /factory/hdcp.keys /system/vendor/firmware/hdcp.keys
 
 service pvrsrvinit /vendor/bin/pvrsrvinit
 	class core

@@ -74,6 +74,17 @@ PRODUCT_PACKAGES += \
 	librs_jni \
 	com.android.future.usb.accessory
 
+# Wi-Fi
+PRODUCT_PACKAGES += \
+	dhcpcd.conf \
+	hostapd.conf \
+	wifical.sh \
+	TQS_D_1.7.ini \
+	TQS_D_1.7_127x.ini \
+	crda \
+	regulatory.bin \
+	calibrator
+
 # Audio
 PRODUCT_PACKAGES += \
 	audio.primary.panda \
@@ -122,4 +133,5 @@ $(call inherit-product, device/ti/panda/wl12xx/ti-wl12xx-vendor.mk)
 $(call inherit-product, device/ti/panda/wl12xx/ti-wpan-products.mk)
 $(call inherit-product-if-exists, vendor/ti/panda/device-vendor.mk)
 $(call inherit-product-if-exists, device/ti/proprietary-open/omap4/ti-omap4-vendor.mk)
+$(call inherit-product-if-exists, device/ti/proprietary-open/wl12xx/wlan/wl12xx-wlan-fw-products.mk)
 $(call inherit-product-if-exists, device/ti/proprietary-open/omap4/ducati-full_panda.mk)
