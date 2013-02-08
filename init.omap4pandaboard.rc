@@ -24,7 +24,7 @@ on boot
 on fs
 	mount_all /fstab.omap4pandaboard
 
-# change permissions for Bluetooth/FM/GPS
+# change permissions for Bluetooth/FM
     chmod 0600 /sys/class/rfkill/rfkill0/state
     chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
     chmod 0600 /dev/ttyO1
@@ -42,7 +42,7 @@ service pvrsrvinit /vendor/bin/pvrsrvinit
 	group root
 	oneshot
 
-#shared transport user space mgr service for Bluetooth, FM and GPS
+#shared transport user space mgr service for Bluetooth and FM
 service uim /system/bin/uim-sysfs
 	class core
 	user bluetooth
