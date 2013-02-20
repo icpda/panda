@@ -41,7 +41,10 @@ on boot
 	insmod /system/lib/modules/wl12xx.ko debug_level=0x63c00
 
 on fs
-	mount_all /fstab.omap4pandaboard
+	symlink /dev/block/platform /dev/block/platform/omap
+	mount ext4 /dev/block/platform/omap/omap_hsmmc.0/by-name/system /system wait ro
+	mount ext4 /dev/block/platform/omap/omap_hsmmc.0/by-name/userdata /data wait noatime nosuid nodev nomblk_io_submit
+	mount ext4 /dev/block/platform/omap/omap_hsmmc.0/by-name/cache /cache wait noatime nosuid nodev nomblk_io_submit
 
 # change permissions for Bluetooth/FM
     chmod 0600 /sys/class/rfkill/rfkill0/state

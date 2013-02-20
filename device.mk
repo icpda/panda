@@ -14,11 +14,23 @@
 # limitations under the License.
 #
 
+# define OMAP_ENHANCEMENT variables
+include device/ti/panda/Config.mk
+
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 LOCAL_KERNEL := device/ti/panda/kernel
 else
 LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
+
+DEVICE_PACKAGE_OVERLAYS := device/ti/panda/overlay
+
+# This device is xhdpi.  However the platform doesn't
+# currently contain all of the bitmaps at xhdpi density so
+# we do this little trick to fall back to the hdpi version
+# if the xhdpi doesn't exist.
+PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
+PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 PRODUCT_COPY_FILES := \
 	$(LOCAL_KERNEL):kernel \
@@ -60,9 +72,6 @@ PRODUCT_PROPERTY_OVERRIDES := \
 	hwui.render_dirty_regions=false
 
 PRODUCT_CHARACTERISTICS := tablet,nosdcard
-
-DEVICE_PACKAGE_OVERLAYS := \
-    device/ti/panda/overlay
 
 #HWC Hal
 PRODUCT_PACKAGES += \
