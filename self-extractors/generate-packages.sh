@@ -17,7 +17,7 @@
 (cd ../../../../out/target/product/panda ; zip -r ../../../../device/ti/panda/self-extractors/full_panda-pseudo_ota.zip system)
 
 ZIP=full_panda-pseudo_ota.zip
-BUILD=20120807
+BUILD=20130603
 ROOTDEVICE=panda
 DEVICE=panda
 MANUFACTURER=ti
