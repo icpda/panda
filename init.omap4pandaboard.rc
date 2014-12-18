@@ -49,7 +49,7 @@ service bugreport /system/bin/dumpstate -d -p -B \
 	keycodes 102 272
 
 
-service pvrsrvctl /vendor/bin/pvrsrvctl --start --no-module
+service pvrsrvinit /vendor/bin/pvrsrvinit
 	class core
 	user root
 	group root
